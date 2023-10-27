@@ -17,4 +17,12 @@ class PostController extends AbstractController
             'custom_post' => 'src/Controller/PostController.php'
         ]);
     }
+
+    /*#[Route('/movies', name: 'movies')]
+    public function index(): Response
+    {
+        return $this->render('post/index.html.twig', [
+            'title' => 'Good morning little star´s, the world says HI!'
+        ]);
+    }*/
 }
