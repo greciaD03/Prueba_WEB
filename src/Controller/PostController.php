@@ -13,7 +13,7 @@ class PostController extends AbstractController
     public function index($name): Response
     {
         return $this->json([
-            'post' => 'Bienvenidos!',
+            'post' => $name,
             'custom_post' => 'src/Controller/PostController.php'
         ]);
     }
