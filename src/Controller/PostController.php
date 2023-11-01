@@ -7,28 +7,58 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use function Symfony\Component\String\u;
+use Symfony\Component\Intl\Languages;
+use Symfony\Component\Intl\Scripts;
+use Symfony\Component\Intl\Countries;
+use Symfony\Component\Intl\Locales;
+use Symfony\Component\Intl\Currencies;
 
+#[Route('/blog', requirements: ['_locale' => 'en|es|fr'], name: 'blog_')]
 class PostController extends AbstractController
 {
-    #[Route('/orders/list/{status}', name: 'list_orders_by_status')]
+    /*#[Route('/blog/{page?}', name: 'blog_index', defaults: ['page' => 1, 'title' => 'Hello world!'])]
+    public function index(?int $page, string $title): Response
+    {
+        return new Response ('Sub-Texto: ' .$title);
+    }*/
+
+    #[Route('/{_locale}', name: 'index')]
+    public function index(): Response
+    {
+        return new Response ('Informacion');
+    }
+
+    #[Route('/{_locale}/posts/{slug}', name: 'show')]
+    public function show(string $slug): Response
+    {
+        return new Response ('Doble: ' .$slug);
+    }
+
+    #[Route('/{_locale}/post', name: 'low')]
+    public function low(): Response
+    {
+        return new Response ('Parangaricutirimícuaro');
+    }
+
+    /*#[Route('/orders/list/{status}', name: 'list_orders_by_status')]
     public function list(OrderStatusEnum $status = OrderStatusEnum::Paid): Response
     {
         return new Response ('PRUE-ba: ' .$status);
-    }
+    }*/
     
-    /*#[Route('/blog/{page?}', name: 'blog_list', requirements: ['page' => '\d+'], priority: 3)]
+    /*#[Route('/blog/{page?}', name: 'blog_list', requirements: ['page' => '2'], priority: 3)]
     public function list(?int $page=2): Response
     {
         return new Response ('Pagina: ' .$page); 
-    } 
+    }*/
 
-    #[Route('/blog/{page3}', name: 'blog_list', requirements: ['page3' => '\d+'], priority: 2)]
+    /*#[Route('/blog/{page3}', name: 'blog_list', requirements: ['page3' => '3'], priority: 2)]
     public function parrafo(int $page3=3): Response
     {
         return new Response ('Pagina con contador: ' .$page3); 
-    } 
+    }*/
 
-    #[Route('/blog/{page4}', name: 'blog_list', requirements: ['page4' => '\d+'])]
+    /*#[Route('/blog/{page4}', name: 'blog_list', requirements: ['page4' => '4'])]
     public function conjunto(int $page4=4): Response
     {
         return new Response ('TEXTO TEXTO TEXO TEXTO: ' .$page4); 
@@ -46,7 +76,7 @@ class PostController extends AbstractController
     public function list(?int $page=1): Response
     {
         return new Response ('T E X T O: ' .$page); 
-    }*/
+    }/*
 
    /*#[Route('/movies/{name}', name: 'movies', defaults: ['name' => null], methods:
     ['GET', 'HEAD'])]
