@@ -8,11 +8,12 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PruebaController extends AbstractController
 {
-    #[Route('/prueba', name: 'app_prueba')]
-    public function index(): Response
+    #[Route('/prueba/{$id}', name: 'app_prueba', defaults: ['id' => null])]
+    public function index($id): Response
     {
         return $this->render('prueba/index.html.twig', [
             'controller_name' => 'PruebaController',
+            'post' => $id 
         ]);
     }
 }
