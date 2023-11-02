@@ -8,10 +8,10 @@ use Symfony\Component\Routing\Annotation\Route;
 use function Symfony\Component\String\u;
 use App\Enum\OrderStatusEnum;
 
-#[Route('/blog', requirements: ['_locale' => 'en|es|fr'], name: 'blog_')]
+//#[Route('/blog', requirements: ['_locale' => 'en|es|fr'], name: 'blog_')]
 class PostController extends AbstractController
 {
-    #[Route('/{_locale}', name: 'index')]
+    /*#[Route('/{_locale}', name: 'index')]
     public function index(): Response
     {
         return new Response ('Informacion');
@@ -39,7 +39,7 @@ class PostController extends AbstractController
     public function list(OrderStatusEnum $status = OrderStatusEnum::Paid): Response
     {
         return new Response ('PRUE-ba: ' .$status);
-    }*/
+    }
     
     #[Route('/{_locale}/lista/{page?}', name: 'lista', requirements: ['page' => '2'], priority: 3)]
     public function lista(?int $page=2): Response
@@ -111,7 +111,7 @@ class PostController extends AbstractController
             'post' => $name,
             'custom_post' => 'src/Controller/PostController.php'
         ]);
-    }*/
+    }
 
     #[Route('/{_locale}/mov', name: 'mov')]
     public function mov(): Response
@@ -137,14 +137,14 @@ class PostController extends AbstractController
             $title = 'All Genres';
         }
         return new Response($title);
-    }
+    }*/
 
-    /*#[Route('/browse/{slug}')]
+    #[Route('/browse/{slug}')]
     public function browse(string $slug = null): Response
     {
         $title = u(str_replace('-', ' ', $slug))->title(true); 
         return new Response('Genre: ' .$title); 
-    }*/
+    }
 }
 
 //https://gitnacho.github.io/symfony-docs-es/cookbook/routing/method_parameters.html
