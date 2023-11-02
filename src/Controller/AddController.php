@@ -30,7 +30,7 @@ class AddController extends AbstractController
             'Message' => 'WELCOME!',
             'Path' => 'src/Controller/PostController.php',
             'Variable' => $variable,
-            'Operacion' => $operacion
+            'Operacion + 10' => $operacion
         ]);
     }
 
